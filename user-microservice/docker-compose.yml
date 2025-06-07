@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=postgres://postgres:postgres@postgres:5432/lms-users?sslmode=disable
+      - REDIS_URL=redis-backend:6379
+      - REDIS_PASSWORD=
+      - SECRET=8Jk2k3n4l5m6n7o8p9q0r1s2t3u4v5w6
+      - EMAILPASS=jonpqlpzmamiourl
+      - EMAIL=vlvlms666666@gmail.com
+      - SMTP=smtp.gmail.com
+      - SMTP_ADDR=smtp.gmail.com:587
+      - UNECON_ADMIN=spbgeua@gmail.com
+      - SPBPU_ADMIN=spbpua@gmail.com
+      - ITMO_ADMIN=itmoa3280@gmail.com
+      - PATH_TO_HTML=/app/templateshtml/
+    depends_on:
+      - redis-backend
+      - postgres
+    networks:
+      - backend-network
+
+  redis-backend:
+    image: redis:alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-backend-data:/data
+    restart: unless-stopped
+    networks:
+      - backend-network
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=lms-users
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - backend-network
+
+volumes:
+  postgres-data:
+  redis-backend-data:
+
+networks:
+  backend-network:
+    driver: bridge

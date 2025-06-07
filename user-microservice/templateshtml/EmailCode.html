@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{{define "Email"}}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Код подтверждения регистрации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 32px 24px;
+        }
+        .title {
+            color: #2d7ff9;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .code-box {
+            background: #f0f4fa;
+            border-left: 4px solid #2d7ff9;
+            padding: 18px 0;
+            margin: 24px 0 20px 0;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 32px;
+            letter-spacing: 8px;
+            font-weight: bold;
+            color: #2d7ff9;
+        }
+        .footer {
+            color: #888;
+            font-size: 13px;
+            margin-top: 32px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">Ваш код подтверждения регистрации</div>
+    <div>Пожалуйста, введите этот код на сайте для завершения регистрации:</div>
+    <div class="code-box">{{.Code}}</div>
+    <div class="footer">
+        Это автоматическое уведомление. Если вы не запрашивали регистрацию, просто проигнорируйте это письмо.
+    </div>
+</div>
+</body>
+</html>
+{{end}}
