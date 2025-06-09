@@ -1,4 +1,4 @@
-module lms-microservices
+module course-microservice
 
 go 1.24.2
 
@@ -7,7 +7,6 @@ require (
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
-	github.com/hansolf/middleware v0.0.0-20250609104319-4c603d7557d1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx v3.6.2+incompatible // indirect
@@ -17,4 +16,5 @@ require (
 	github.com/redis/go-redis/v9 v9.10.0 // indirect
 	golang.org/x/crypto v0.39.0 // indirect
 	golang.org/x/text v0.26.0 // indirect
+	github.com/hansolf/middleware v0.0.0-20250609104319-4c603d7557d1
 )
