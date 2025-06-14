@@ -31,11 +31,22 @@ func CreateCourse() error {
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     author TEXT NOT NULL,
-    category TEXT NOT NULL
+    category TEXT NOT NULL,
+    idTeacher INTEGER NOT NULL
 )`
 	_, err := conn.Exec(context.Background(), createCourse)
 	if err != nil {
 		return fmt.Errorf("Ошибка создания курса бд %v", err)
+	}
+	createUserC := `CREATE TABLE IF NOT EXISTS usercourse (
+    id SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL,
+    courseID INTEGER NOT NULL,
+    status TEXT NOT NULL
+)`
+	_, err = conn.Exec(context.Background(), createUserC)
+	if err != nil {
+		return fmt.Errorf("Ошибка создания usercourse %v", err)
 	}
 	return nil
 }
